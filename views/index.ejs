@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Sharing Notes</title>
+</head>
+<body>
+    <h1>Sharing to the others Inspiring Quotes</h1>
+    <br />
+
+    <form action="/quotes" method="POST">
+        <input type="text" placeholder="author name" name="name">
+  
+        <input type="text" placeholder="type here your quote and click Submit" name="quote">
+        <br /><br />  
+        <button type="submit">Submit</button>
+    </form>
+    <br />
+
+    <div>
+        <!-- <h2>Darth Vader invades!</h2>
+        <p>
+          Replace first Yoda's quote with a quote written by Darth Vader
+        </p> -->
+        <!-- <button id="update-button">Replace quote</button> -->
+    </div>
+
+    <div>
+        <!-- <h2>Remove Darth Vader!</h2>
+        <p>
+          Delete one Darth Vader's quote. Does nothing if there are no more Darth
+          Vader's quote
+        </p> -->
+        <br />
+        <!-- <button id="delete-button">Delete quote</button>
+        <div id="message"></div> -->
+
+      </div>
+
+    <h2> Quotes </h2>
+
+    <ul class="quotes">
+    <!-- Loop through quotes -->
+    <% for(var i = 0; i < quotes.length; i++) {%>
+        <li class="quote">
+        <span><%= quotes[i].name %></span>:
+        <span><%= quotes[i].quote %></span><br />
+        <button id="update-button">Replace quote</button>
+        <button id="delete-button">Delete quote</button>
+
+        <!-- <button id="delete-button">Delete quote</button> -->
+        </li>
+    <% } %>
+    </ul>
+
+    <script src="/main.js"></script>
+
+</body>
+</html>
