@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Sharing Notes</title>
+
 </head>
 <body>
     <h1>May the 4th be with U</h1>
     <br />
 
     <form action="/quotes" method="POST">
-        <input type="text" placeholder="author name" name="name">
-  
-        <input type="text" placeholder="type here your quote and click Submit" name="quote">
+      <h3>Post your Quote Here</h3>
+        <input type="text" placeholder="Title" name="title">
+        <input type="text" placeholder="Author Name" name="name">  
+        <input type="text" placeholder="Type here your quote and click Submit" name="quote">
+        
         <br /><br />  
         <button type="submit">Submit</button>
     </form>
@@ -28,27 +32,45 @@
 
     <h2> Quotes </h2>
 
+    <!-- <button id="deleteall">Delete All</button> -->
+
+
     
       <ul class="quotes">
       <!-- Loop through quotes -->
         <% for(var i = 0; i < quotes.length; i++) {%>
             <li class="quote">
           <div class="quotes-wrap">
-            <span><%= quotes[i].name %></span>:
-            <span><%= quotes[i].quote %></span><br />
+            <span>Title: <%= quotes[i].title %></span><br />
+            <span>Author: <%= quotes[i].name %></span><br />
+            <span>Quote: <%= quotes[i].quote %></span><br />
+            <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+
+
+
+
+            <span><%= quotes[i].date %></span>
+
             <!-- <button id="update-button">Replace quote</button> -->
             <br />
             <button id="delete-button">Delete quote</button>
-          </div>
-
-            <!-- <button id="delete-button">Delete quote</button> -->
-            </li>
+            
+          </li>
+        </div>
         <% } %>
         </ul>
 
     
-    
+    <script>
+      function myFunction(x) {
+       x.classList.toggle("fa-thumbs-down");
+      }
+    </script>
 
+        <!-- <script>
+          var date = new Date();
+          document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+        </script> -->
 
     <script src="/main.js"></script>
     <br />

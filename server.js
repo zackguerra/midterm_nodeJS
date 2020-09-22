@@ -10,8 +10,6 @@ app.use(express.static('/public'))
 app.use(bodyParser.json())
 
 // const mongoose = require('mongoose')
-// const url = 'mongodb://127.0.0.1:27017/street-fighters'
-
 // mongoose.connect(url, { useNewUrlParser: true })
 
 
@@ -21,7 +19,7 @@ app.use(bodyParser.json())
 const mongoConnection = 'mongodb+srv://guerra:guerra@cluster0.wkxix.mongodb.net/<dbname>?retryWrites=true&w=majority'
 
 
-MongoClient.connect(mongoConnection, { useUnifiedTopology: true })  
+MongoClient.connect(mongoConnection, { useUnifiedTopology: true })
 
     
     .then(client => {
@@ -59,11 +57,15 @@ MongoClient.connect(mongoConnection, { useUnifiedTopology: true })
 
             app.put('/quotes', (req, res) => {
               console.log(req.body)
+
+
               quotesCollection.findOneAndUpdate( 
                 { name: '' },
                 { $set: {
+                  title: req.body.title,
                   name: req.body.name,
-                  quote: req.body.quote
+                  quote: req.body.quote,
+                  // datequote: req.body.Date.now()
                 }
               },
               {
@@ -78,9 +80,9 @@ MongoClient.connect(mongoConnection, { useUnifiedTopology: true })
             })
 
             app.delete('/quotes', (req, res) => {
-              quotesCollection.deleteOne(
+              quotesCollection.findOneAndDelete(
                 // { name: req.body.name }
-                { id: req.body.deleteOne }
+                { id: req.params.deleteOne }
 
               )
               .then(result => {
@@ -91,6 +93,27 @@ MongoClient.connect(mongoConnection, { useUnifiedTopology: true })
                 })
                 .catch(error => console.error(error))
             })
+
+            // app.deleteMany('/quotes', (req, res)=>{
+            //   quotes.collection.deleteMany(
+            //     ({}),
+            //   )
+            // })
+
+            // app.deleteMany('/quotes', (req, res) => {
+            //   quotesCollection("quotes").deleteMany(
+            //     { id: req.params.deleteMany }
+            //   )
+            //   .then(result => {
+            //     if (result.deletedCount === 0) {
+            //       return res.json('No quote to delete')
+            //     }
+            //       res.json(`Deleted quote`)
+            //     })
+            //     .catch(error => console.error(error))
+            // })
+
+
 
 
 
