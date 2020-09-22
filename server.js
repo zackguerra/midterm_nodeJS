@@ -4,7 +4,15 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient
 app.set('view engine', 'ejs')
 app.use(express.static('/public'))
+// app.use(express.static(__dirname + '/public'));
+
+
 app.use(bodyParser.json())
+
+// const mongoose = require('mongoose')
+// const url = 'mongodb://127.0.0.1:27017/street-fighters'
+
+// mongoose.connect(url, { useNewUrlParser: true })
 
 
 
@@ -52,7 +60,7 @@ MongoClient.connect(mongoConnection, { useUnifiedTopology: true })
             app.put('/quotes', (req, res) => {
               console.log(req.body)
               quotesCollection.findOneAndUpdate( 
-                { name: 'Yoda' },
+                { name: '' },
                 { $set: {
                   name: req.body.name,
                   quote: req.body.quote
@@ -64,14 +72,16 @@ MongoClient.connect(mongoConnection, { useUnifiedTopology: true })
             )
               .then(result => {
                 res.json('Success')
-                console.log('Success')
+                // console.log('Success')
               })
               .catch(error => console.error(error))
             })
 
             app.delete('/quotes', (req, res) => {
               quotesCollection.deleteOne(
-                { name: req.body.name }
+                // { name: req.body.name }
+                { id: req.body.deleteOne }
+
               )
               .then(result => {
                 if (result.deletedCount === 0) {

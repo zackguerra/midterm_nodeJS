@@ -1,13 +1,34 @@
 // main.js
-const update = document.querySelector('#update-button')
+const update1 = document.querySelector('#update-button1')
+const update2 = document.querySelector('#update-button2')
 
-update.addEventListener('click', _ => {    
+
+update1.addEventListener('click', _ => {    
     fetch('/quotes', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: 'Darth Vader',
-        quote: 'Come to the Dark Side'
+        quote: 'You dont know the power of the dark side.'
+      })
+    })
+    .then(res => {
+        if (res.ok) return res.json()
+    })
+    .then(response => {
+        console.log(response)
+        window.location.reload(true)
+
+    })
+  })
+
+  update2.addEventListener('click', _ => {    
+    fetch('/quotes', {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Yoda',
+        quote: 'Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. Hate leads to suffering.'
       })
     })
     .then(res => {
@@ -28,7 +49,7 @@ deleteButton.addEventListener('click', _ => {
       method: 'delete',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: 'Darth Vader'
+        name: name
       })
     })
       .then(res => {

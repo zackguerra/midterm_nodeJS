@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
     <title>Sharing Notes</title>
 </head>
 <body>
-    <h1>Sharing to the others Inspiring Quotes</h1>
+    <h1>May the 4th be with U</h1>
     <br />
 
     <form action="/quotes" method="POST">
@@ -18,44 +18,42 @@
         <button type="submit">Submit</button>
     </form>
     <br />
+    <h2>Generate a Quote, choose a path...</h2>
+    <div class="buttons-wrap">
+      <button id="update-button1" style="background-color: red; color: black;">Dark Side</button>
+      <button id="update-button2" style="background-color: lightblue; color: black;">Light Side</button>
+    </div>    
 
-    <div>
-        <!-- <h2>Darth Vader invades!</h2>
-        <p>
-          Replace first Yoda's quote with a quote written by Darth Vader
-        </p> -->
-        <!-- <button id="update-button">Replace quote</button> -->
-    </div>
 
-    <div>
-        <!-- <h2>Remove Darth Vader!</h2>
-        <p>
-          Delete one Darth Vader's quote. Does nothing if there are no more Darth
-          Vader's quote
-        </p> -->
-        <br />
-        <!-- <button id="delete-button">Delete quote</button>
-        <div id="message"></div> -->
-
-      </div>
 
     <h2> Quotes </h2>
 
-    <ul class="quotes">
-    <!-- Loop through quotes -->
-    <% for(var i = 0; i < quotes.length; i++) {%>
-        <li class="quote">
-        <span><%= quotes[i].name %></span>:
-        <span><%= quotes[i].quote %></span><br />
-        <button id="update-button">Replace quote</button>
-        <button id="delete-button">Delete quote</button>
+    
+      <ul class="quotes">
+      <!-- Loop through quotes -->
+        <% for(var i = 0; i < quotes.length; i++) {%>
+            <li class="quote">
+          <div class="quotes-wrap">
+            <span><%= quotes[i].name %></span>:
+            <span><%= quotes[i].quote %></span><br />
+            <!-- <button id="update-button">Replace quote</button> -->
+            <br />
+            <button id="delete-button">Delete quote</button>
+          </div>
 
-        <!-- <button id="delete-button">Delete quote</button> -->
-        </li>
-    <% } %>
-    </ul>
+            <!-- <button id="delete-button">Delete quote</button> -->
+            </li>
+        <% } %>
+        </ul>
+
+    
+    
+
 
     <script src="/main.js"></script>
-
+    <br />
+    <div class="footer_copyright">
+      <p>&copy; 2020 Zack Guerra.</b>. All rights reserved.</p>
+  </div>
 </body>
 </html>
