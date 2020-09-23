@@ -1,6 +1,10 @@
 body {
-  background-image: url(../../img/star-wars-wallpapers-1920x1080-wallpaper-cave-12.jpg);
-  background-color: rgba(0, 0, 0, 80%);
+  background-image: url(../img/star-wars2.jpg);  
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  
   padding: 0px;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
